@@ -35,15 +35,11 @@ local plugins = {
       { 'rafamadriz/friendly-snippets' },
     }
   },
-  -- plugin to show the lsp status
-  {
-    "j-hui/fidget.nvim",
-    tag = "legacy"
-  },
   -- Theme
   {
     'svrana/neosolarized.nvim',
-    dependencies = { 'tjdevries/colorbuddy.nvim' }
+    dependencies = { 'tjdevries/colorbuddy.nvim' },
+    lazy = true
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -126,13 +122,17 @@ local plugins = {
     }
   },
   -- Git
-  "tpope/vim-fugitive",
+  {
+    "tpope/vim-fugitive",
+    lazy = true,
+  },
   {
     "lewis6991/gitsigns.nvim",
   },
   -- File explorer
   {
     "nvim-tree/nvim-tree.lua",
+    lazy = true,
     version = "*",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
@@ -143,6 +143,7 @@ local plugins = {
   },
   {
     'nvim-telescope/telescope.nvim',
+    lazy = true,
     dependencies = {
       "nvim-lua/plenary.nvim"
     },
@@ -154,6 +155,7 @@ local plugins = {
   -- Toggleterm
   {
     'akinsho/toggleterm.nvim',
+    lazy = true,
     version = "*",
     config = function()
       require("toggleterm").setup(
@@ -197,6 +199,7 @@ local plugins = {
   },
   -- Live Server
   {
+    lazy = true,
     'barrett-ruth/live-server.nvim',
     config = function()
       require('live-server').setup()
@@ -204,6 +207,7 @@ local plugins = {
   },
   -- Debugger
   {
+    lazy = true,
     'mfussenegger/nvim-dap',
     dependencies = {
       'nvim-telescope/telescope-dap.nvim',
@@ -270,6 +274,7 @@ local plugins = {
   },
   -- Database Management
   {
+    lazy = true,
     "tpope/vim-dadbod",
     dependencies = {
       "kristijanhusak/vim-dadbod-ui",
@@ -279,13 +284,9 @@ local plugins = {
   {
     'navarasu/onedark.nvim'
   },
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000
-  },
   -- Lua
   {
+    lazy = true,
     "folke/zen-mode.nvim",
     opts = {
     }
@@ -310,12 +311,9 @@ local plugins = {
       "nvim-treesitter/nvim-treesitter",
     }
   },
-  -- vscode theme
-  {
-    'Mofiqul/vscode.nvim'
-  },
   -- Neotest
   {
+    lazy = true,
     "nvim-neotest/neotest",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -325,15 +323,18 @@ local plugins = {
   },
   -- DiffView
   {
+    lazy = true,
     "sindrets/diffview.nvim",
     event = "BufRead",
   },
   --- Undotree
   {
+    lazy = true,
     "mbbill/undotree",
   },
   -- Octo
   {
+    lazy = true,
     'pwntester/octo.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -342,8 +343,8 @@ local plugins = {
     },
   },
   -- Rest client
-  -- plugins/rest.lua
   {
+    lazy = true,
     "rest-nvim/rest.nvim",
     dependencies = { { "nvim-lua/plenary.nvim" } },
   },
