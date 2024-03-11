@@ -286,7 +286,6 @@ local plugins = {
   },
   -- Lua
   {
-    lazy = true,
     "folke/zen-mode.nvim",
     opts = {
     }
@@ -329,7 +328,6 @@ local plugins = {
   },
   --- Undotree
   {
-    lazy = true,
     "mbbill/undotree",
   },
   -- Octo
@@ -348,19 +346,45 @@ local plugins = {
     "rest-nvim/rest.nvim",
     dependencies = { { "nvim-lua/plenary.nvim" } },
   },
-  -- Leap, jumb to locations
+
+  -- Custom Parameters (with defaults)
   {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    opts = {},
-    keys = {
-      { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-      { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-      { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-      { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
-    },
-  }
+    "David-Kunz/gen.nvim",
+    opts = {
+      model = "zephyr",       -- The default model to use.
+      host = "localhost",     -- The host running the Ollama service.
+      port = "11434",         -- The port on which the Ollama service is listening.
+      display_mode = "float", -- The display mode. Can be "float" or "split".
+      show_prompt = false,    -- Shows the Prompt submitted to Ollama.
+      show_model = false,      -- Displays which model you are using at the beginning of your chat session.
+      no_auto_close = false,  -- Never closes the window automatically.
+      init = function(_) pcall(io.popen, "ollama serve > /dev/null 2>&1 &") end,
+      -- Function to initialize Ollama
+      command = function(options)
+        return "curl --silent --no-buffer -X POST http://" ..
+            options.host .. ":" .. options.port .. "/api/generate -d $body"
+      end,
+      -- The command for the Ollama service. You can use placeholders $prompt, $model and $body (shellescaped).
+      -- This can also be a command string.
+      -- The executed command must return a JSON object with { response, context }
+      -- (context property is optional).
+      -- list_models = '<omitted lua function>', -- Retrieves a list of model names
+      debug = false -- Prints errors and the command which is run.
+    }
+  },
+  -- Leap, jumb to locations
+  -- {
+  --   "folke/flash.nvim",
+  --   event = "VeryLazy",
+  --   opts = {},
+  --   keys = {
+  --     { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+  --     { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+  --     { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+  --     { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+  --     { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+  --   },
+  -- }
 }
 
 require('lazy').setup(plugins, {})
