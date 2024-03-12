@@ -23,7 +23,7 @@ y = 0
 
 [window]
 decorations = "none"
-opacity = 0.99
+opacity = 0.95
 
 [window.dimensions]
 columns = 120
