@@ -13,7 +13,7 @@ null_ls.setup {
     -- null_ls.builtins.code_actions.eslint_d,
     null_ls.builtins.formatting.gofumpt,
     null_ls.builtins.formatting.goimports_reviser,
-    null_ls.builtins.formatting.sql_formatter.with { command = "sleek" },
+    -- null_ls.builtins.formatting.sql_formatter.with { command = "sleek" },
   },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then

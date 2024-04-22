@@ -274,7 +274,6 @@ local plugins = {
   },
   -- Database Management
   {
-    lazy = true,
     "tpope/vim-dadbod",
     dependencies = {
       "kristijanhusak/vim-dadbod-ui",
