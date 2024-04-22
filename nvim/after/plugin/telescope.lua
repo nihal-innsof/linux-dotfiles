@@ -20,8 +20,7 @@ telescope.setup {
         ['<C-b>'] = actions.preview_scrolling_up,
         ['<C-f>'] = actions.preview_scrolling_down,
       }
-    }
+    },
+    file_ignore_patterns = { ".git/" },
   }
 }
-
-local opts = { noremap = true, silent = true }
