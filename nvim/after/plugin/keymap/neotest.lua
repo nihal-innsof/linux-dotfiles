@@ -8,13 +8,20 @@ end
 local keymap = {
   t = {
     name = "Tests",
-    w = { '<cmd>lua require("neotest").summary.toggle()<cr>', "Toggle test summary window" },
-    r = { '<cmd>lua require("neotest").run.run()<cr>', "Run nearest test" },
-    d = { '<cmd>lua require("neotest").run.run_last({ strategy = "dap" })<cr>', "Debug last runned test" },
-    o = { '<cmd>lua require("neotest").output.open()<cr>', "Toggle output" },
-    O = { '<cmd>lua require("neotest").output_panel.toggle()<cr>', "Toggle output panel" },
-    -- O = { neotest.output.open, "Toggle output panel" },
-    c = { '<cmd>lua require("neotest").output_panel.clear()<cr>', "Clear output panel" },
+    w = { function() neotest.summary.toggle() end, "Toggle test summary window" },
+    r = { function() neotest.run.run() end, "Run nearest test" },
+    d = { function()
+      local filetype = vim.bo.filetype
+      if (filetype == "go") then
+        require("dap-go").debug_test()
+        return
+      end
+      ---@diagnostic disable-next-line: missing-fields
+      neotest.run.run_last({ strategy = "dap" })
+    end, "Debug last runned test" },
+    o = { function() neotest.output.open() end, "Toggle output" },
+    O = { function() neotest.output_panel.toggle() end, "Toggle output panel" },
+    c = { function() neotest.output_panel.clear() end, "Clear output panel" },
   }
 }
 

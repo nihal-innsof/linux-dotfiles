@@ -10,6 +10,7 @@ neotest.setup({
       -- args = { 'flutter' },
       use_lsp = true,
       custom_test_method_names = {},
-    })
+    }),
+    require("neotest-go"),
   }
 })

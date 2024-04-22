@@ -33,6 +33,7 @@
   "neosolarized.nvim": { "branch": "main", "commit": "32efa31ce3425f68429f8d59c906c3ce783bc921" },
   "neotest": { "branch": "master", "commit": "8782d83869c64700fa419bd5278f4f62c80a2c1a" },
   "neotest-dart": { "branch": "main", "commit": "178c62282d5fa82f3d564b3c256b4d316804da67" },
+  "neotest-go": { "branch": "main", "commit": "6a2f996d89fe4631942e035b1c114544ee045043" },
   "null-ls.nvim": { "branch": "main", "commit": "0010ea927ab7c09ef0ce9bf28c2b573fc302f5a7" },
   "nvim-autopairs": { "branch": "master", "commit": "0f04d78619cce9a5af4f355968040f7d675854a1" },
   "nvim-bufferline.lua": { "branch": "main", "commit": "6c456b888823d9e4832aa91c482bccd19445c009" },

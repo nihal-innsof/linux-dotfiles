@@ -316,7 +316,8 @@ local plugins = {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
-      'sidlatau/neotest-dart'
+      'sidlatau/neotest-dart',
+      "nvim-neotest/neotest-go",
     }
   },
   -- DiffView
@@ -355,7 +356,7 @@ local plugins = {
       port = "11434",         -- The port on which the Ollama service is listening.
       display_mode = "float", -- The display mode. Can be "float" or "split".
       show_prompt = false,    -- Shows the Prompt submitted to Ollama.
-      show_model = false,      -- Displays which model you are using at the beginning of your chat session.
+      show_model = false,     -- Displays which model you are using at the beginning of your chat session.
       no_auto_close = false,  -- Never closes the window automatically.
       init = function(_) pcall(io.popen, "ollama serve > /dev/null 2>&1 &") end,
       -- Function to initialize Ollama
