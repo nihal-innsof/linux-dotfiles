@@ -346,6 +346,13 @@ local plugins = {
     "rest-nvim/rest.nvim",
     dependencies = { { "nvim-lua/plenary.nvim" } },
   },
+  -- NUI
+  {
+    "grapp-dev/nui-components.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim"
+    }
+  },
 
   -- Custom Parameters (with defaults)
   {
